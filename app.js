@@ -14,6 +14,7 @@ app.use('/new', createNewRouter);
 app.use('/item', editItemRouter);
 app.use('/category', editCategoryRouter);
 
+console.log(process.env.NODE_ENV);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
