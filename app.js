@@ -14,8 +14,9 @@ app.use('/new', createNewRouter);
 app.use('/item', editItemRouter);
 app.use('/category', editCategoryRouter);
 
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Listening in localhost on port ${PORT}`);
+    console.log(`Listening on port ${PORT}`);
 })
 
