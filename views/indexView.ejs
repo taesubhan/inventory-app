@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Grocery Inventory</h1>
+    <div>
+        <div class="search">
+            <form action="/search" method="GET">
+                <label for="search">Search: </label>
+                <input type="text" id="search" name="itemNameSearch" value="<%= searchItems ? searchItems.itemNameSearch : '' %>">
+
+                <label for="category">Category: </label>
+                <select name="categoryID" id="categoryDropdown">
+                    <option value="">All</option>
+                <% for (const category of categories) { %>
+                    <option value="<%= category.category_id %>" <%= searchItems && searchItems.categoryID == category.category_id ? "selected" : "" %> > <%= category.category_title %> </option>
+                <% } %>
+                </select>
+
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <a href="/new">Create new</a>
+        <ul class="itemList">
+            <% for (const item of items) { %>
+                <li class="item">
+                    <div><%= item.name %></div>
+                    <div><%= item.category_title %></div>
+                    <a href="/item/<%= item.item_id %>">Edit</a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+
+    <h2>Categories</h2>
+    <div class="categoryContainer">
+        <ul class="categoryList">
+            <% for (const category of categories) { %>
+                <li class="category">
+                    <div><%= category.category_title %></div>
+                    <a href="/category/<%= category.category_id %>">Edit</a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Create New</h1>
+    <div class="createNewItem">
+        <h2>Create New Item</h2>
+        <form action="/new/item" method="POST">
+            <label for="itemName">Item: </label>
+            <input type="text" id="itemName" name="item">
+            <label for="category">Category: </label>
+            <select name="categoryID" id="categoryDropdown">
+                <% for (const category of categories) { %>
+                    <option value=<%= category.category_id %>> <%= category.category_title %> </option>
+                <% } %>
+            </select>
+            <button type="submit">Submit New Item</button>
+        </form>
+    </div>
+    <div class="createNewCategory">
+        <h2>Create New Category</h2>
+        <form action="/new/category" method="POST">
+            <label for="newCategory">Category: </label>
+            <input type="text" id="newCategory" name="categoryTitle">
+            <button type="submit">Submit New Category</button>
+        </form>
+    </div>
+    <%- include('errorsPartial.ejs') %>
+    <a href="/">Home</a>
+</body>
+</html>

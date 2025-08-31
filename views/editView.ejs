@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Inventory</h1>
+    <form action="/item/edit/<%= itemID %>" method="POST">
+        <label for="itemName">Item: </label>
+        <input type="text" id="itemName" name="itemName" value= <%= itemName %>>
+
+        <label for="category">Category: </label>
+        <select name="categoryID" id="category">
+                <option value="" <%= !categoryID ? 'selected' : '' %>  ></option>
+            <% for (const category of categoryList) { %>
+                <option value=<%= category.category_id %>
+                    <% if (category.category_id == categoryID) { %>
+                        selected
+                    <% } %>
+                    ><%= category.category_title %> </option>
+            <% } %>
+        </select>
+
+        <button type="submit">Save</button>
+
+    </form>
+    <form action="/item/delete/<%= itemID %>" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+    <a href="/">Home</a>
+</body>
+</html>
